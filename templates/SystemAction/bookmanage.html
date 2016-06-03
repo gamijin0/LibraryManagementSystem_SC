@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    图书管理
+{% endblock %}
+
+{% block content %}
+
+<form role="form" class="form-horizontal" method='post'>
+{% csrf_token %}
+
+    {% for item in form %}
+        <div class="form-group">
+            <label class="control-label col-md-1">{{item.label}}</label>
+            <div class="col-md-2">
+                {{item}}
+            </div>
+            <div class="col-md-offset-1 col-md-10">
+                {{item.errors}}
+            </div>
+        </div>
+    {% endfor %}
+
+    <input type="submit" value="入库" class="btn btn-primary">
+</form>
+
+{% endblock %}
