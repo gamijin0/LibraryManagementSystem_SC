@@ -22,9 +22,9 @@ class SaveForm(forms.Form):
     category_id = forms.CharField(max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
     category_id.label = u"类型"
 
-    counts = forms.CharField(max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    counts = forms.IntegerField(required=True,widget=forms.TextInput(attrs={'size': 20,}))
     counts.label = u"入库数量"
 
-    introduction = forms.TextInput(attrs={'class':'form-control'})
+    introduction = forms.TextInput(attrs={'class': 'form-control'})
 
 
