@@ -136,7 +136,7 @@ def ResetPassword(request,ID):
     user = get_user_model().objects.get(id = ID)
 
     newpassword = get_user_model().objects.make_random_password(length=10,allowed_chars='abcdefghjklmnpqrstuvwxyABCDEFGHJKLMNPQRSTUVWXY3456789')
-    print '====>ResetPassword:%s-->%s' %(user.username,newpassword)
+    print ('====>ResetPassword:%s-->%s' %(user.username,newpassword))
     user.set_password(newpassword)
     user.save()
 
