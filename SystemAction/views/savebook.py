@@ -4,36 +4,50 @@ from django.shortcuts import render_to_response,RequestContext,render
 from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
 
+from django.contrib.auth.decorators import login_required
+from website.common.CommonPaginator import SelfPaginator
+from UserManage.views.permission import PermissionVerify
 
 from SystemAction.forms import SaveForm
 
 
-
-# def index(request):
-#     pass
-#     return render_to_response('SystemAction/save.html',locals(),RequestContext(request))
-#
-
+@login_required()
+@PermissionVerify()
 def SaveBook(request):
+    from SystemAction.models import Book
+    import datetime
     pass
-    if (request.method=='POST'):
+    if (request.method=='POST'):#有提交请求
 
         form = SaveForm(request.POST)
         if(form.is_valid()):
+
+
+            a = form.__dict__
+            print(a)
+
+
+            #构造数据库对象
+            oneToSave = Book(
+                book_id=form.cleaned_data['book_myid'],
+                book_name=form.cleaned_data['book_name'],
+                author=form.cleaned_data['author'],
+                press=form.cleaned_data['press'],
+                publication_year=form.cleaned_data['publication_year'],
+                category_id=form.cleaned_data['category_id'],
+                inventory=form.cleaned_data['inventory'],
+                )
+            #存入数据库
+            oneToSave.save()
+            #存储成功后跳转到图书管理页面
             return HttpResponseRedirect(reverse('bookmanage'))
 
-        # one = list()
-        # for i in request.POST:
-        #     one.append(str(i)+":"+str(request.POST[i]))
-        #     print(i)
-        # #form = SaveBook(request)
-        # return HttpResponse(str(one))
     else:
         form = SaveForm()
-    kwvars={
-        'form':form,
-        'request':request,
-    }
+        kwvars={
+            'form':form,
+            'request':request,
+        }
+        return render_to_response('SystemAction/save.html',kwvars,RequestContext(request))
 
-    return render_to_response('SystemAction/save.html',kwvars,RequestContext(request))
-    #return render(request,'SystemAction/save.html',{'form':form})
+    return render_to_response('SystemAction/save.html',{'form':form,'request':request},RequestContext(request))

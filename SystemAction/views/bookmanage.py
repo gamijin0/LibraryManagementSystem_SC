@@ -3,21 +3,29 @@ from django.shortcuts import render_to_response,RequestContext,render
 from django.http import HttpResponse
 # Create your views here.
 
+from django.contrib.auth.decorators import login_required
+from website.common.CommonPaginator import SelfPaginator
+from UserManage.views.permission import PermissionVerify
 
-from SystemAction.forms import SaveForm
+from SystemAction.models import Book
 
-import sys
 
-default_encoding = 'utf-8'
-if sys.getdefaultencoding() != default_encoding:
-    reload(sys)
-    sys.setdefaultencoding(default_encoding)
-
+@login_required()
+@PermissionVerify()
 def BookManage(request):
+
+    booklist = Book.objects.all()
 
     kwvars={
         'request':request,
+        'booklist':booklist
     }
 
     return render_to_response('SystemAction/bookmanage.html',kwvars,RequestContext(request))
-    #return render(request,'SystemAction/bookmanage.html')
+
+
+@login_required()
+@PermissionVerify()
+def DelBook(request,book_id):
+    pass
+    return HttpResponse(request)

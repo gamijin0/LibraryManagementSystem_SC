@@ -5,23 +5,40 @@
 {% endblock %}
 
 {% block content %}
+    <div class="well">
 
-<form role="form" class="form-horizontal" method='post'>
-{% csrf_token %}
+    <table class="table table-striped">
+        <caption> 图书管理</caption>
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>名称</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>出版年份</th>
+                <th>类型</th>
+                <th>库存数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
 
-    {% for item in form %}
-        <div class="form-group">
-            <label class="control-label col-md-1">{{item.label}}</label>
-            <div class="col-md-2">
-                {{item}}
-            </div>
-            <div class="col-md-offset-1 col-md-10">
-                {{item.errors}}
-            </div>
-        </div>
-    {% endfor %}
+        {% for item in booklist %}
 
-    <input type="submit" value="入库" class="btn btn-primary">
-</form>
+            <th>{{ item.book_id }}</th>
+            <th>{{ item.book_name}}</th>
+            <th>{{ item.author}}</th>
+            <th>{{ item.press}}</th>
+            <th>{{ item.publication_year }}</th>
+            <th>{{ item.category_id }}</th>
+            <th>{{ item.inventory }}</th>
+            <th>
+{#                <button class="btn btn-danger">edit</button>#}
+                <a href={% url "delbook" item.book_id %} onclick= "return confirm('是否确认删除')"><span class="glyphicon glyphicon-trash btn-xs btn-danger"></span></a>
+            </th>
+        {% endfor %}
 
+    </table>
+
+
+    </div>
 {% endblock %}
