@@ -2,7 +2,7 @@
 from django import forms
 
 
-
+#  表单内容
 class SaveForm(forms.Form):
 
     book_myid = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -32,3 +32,7 @@ class SaveForm(forms.Form):
     inventory = forms.IntegerField(required=True,widget=forms.TextInput(attrs={'class': 'form-control'}))
     inventory.label = u"入库数量"
     inventory.error_messages = {'required': '请输入入库数量'}
+
+
+# 借书表内容
+

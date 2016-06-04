@@ -15,16 +15,12 @@ from SystemAction.forms import SaveForm
 @PermissionVerify()
 def SaveBook(request):
     from SystemAction.models import Book
-    import datetime
-    pass
     if (request.method=='POST'):#有提交请求
 
         form = SaveForm(request.POST)
         if(form.is_valid()):
 
 
-            a = form.__dict__
-            print(a)
 
 
             #构造数据库对象

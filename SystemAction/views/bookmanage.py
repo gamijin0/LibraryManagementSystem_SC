@@ -14,7 +14,7 @@ from SystemAction.models import Book
 @login_required()
 @PermissionVerify()
 def BookManage(request):
-
+    # 服务器请求函数
     booklist = Book.objects.all()
 
     kwvars={
@@ -28,7 +28,7 @@ def BookManage(request):
 @login_required()
 @PermissionVerify()
 def DelBook(request,book_id):
-
+    # 删除书籍函数
     delone = Book.objects.get(book_id=book_id)
     Book.delete(delone)
 

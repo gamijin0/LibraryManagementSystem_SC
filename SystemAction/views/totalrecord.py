@@ -12,10 +12,11 @@ from SystemAction.forms import SaveForm
 #
 
 def TotalRecord(request):
-    pass
+    from SystemAction.models import Borrow
 
     kwvars={
         'request':request,
+
     }
 
     return render_to_response('SystemAction/save.html',kwvars,RequestContext(request))
