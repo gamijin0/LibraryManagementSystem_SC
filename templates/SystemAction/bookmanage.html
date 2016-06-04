@@ -33,9 +33,16 @@
             <th>{{ item.category_id }}</th>
             <th>{{ item.inventory }}</th>
             <th>
+
+                <a>
+                    <span class="glyphicon glyphicon-pencil btn btn-success">   修改</span>
+                </a>
+
+
                 <a  href={% url 'delbook' item.book_id %} onclick= "return confirm('是否确认删除')">
-                <span class="glyphicon glyphicon-trash btn btn-danger">del
+                <span class="glyphicon glyphicon-trash btn btn-danger">   删除
                 </span></a>
+
             </th>
         {% endfor %}
 
