@@ -12,3 +12,4 @@ class Book(models.Model):
     add_time = models.DateField(auto_now=True)
     category_id = models.CharField(max_length=20,null=False)
     inventory = models.SmallIntegerField(max_length=4,null=False)
+
