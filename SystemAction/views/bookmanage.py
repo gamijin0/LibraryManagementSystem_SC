@@ -33,3 +33,11 @@ def DelBook(request,book_id):
     Book.delete(delone)
 
     return HttpResponseRedirect(reverse('bookmanage'))
+
+
+@login_required()
+@PermissionVerify()
+def EditBook(request,book_id):
+    #修改书籍信息
+    pass
+    return HttpResponse(str(book_id))

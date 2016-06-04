@@ -20,9 +20,6 @@ def SaveBook(request):
         form = SaveForm(request.POST)
         if(form.is_valid()):
 
-
-
-
             #构造数据库对象
             oneToSave = Book(
                 book_id=form.cleaned_data['book_myid'],
@@ -32,6 +29,7 @@ def SaveBook(request):
                 publication_year=form.cleaned_data['publication_year'],
                 category_id=form.cleaned_data['category_id'],
                 inventory=form.cleaned_data['inventory'],
+                remain_num=form.cleaned_data['inventory'],
                 )
             #存入数据库
             oneToSave.save()
