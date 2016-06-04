@@ -1,6 +1,7 @@
 # coding: utf-8
+from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response,RequestContext,render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
 
 from django.contrib.auth.decorators import login_required
@@ -27,5 +28,8 @@ def BookManage(request):
 @login_required()
 @PermissionVerify()
 def DelBook(request,book_id):
-    pass
-    return HttpResponse(request)
+
+    delone = Book.objects.get(book_id=book_id)
+    Book.delete(delone)
+
+    return HttpResponseRedirect(reverse('bookmanage'))
