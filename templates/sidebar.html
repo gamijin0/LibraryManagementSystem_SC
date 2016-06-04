@@ -6,12 +6,12 @@
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed"><span class="glyphicon glyphicon-list-alt btn-xs"></span>个人管理</a>
                         </h4>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse {% if '/' = request.path %} in {% endif %}">
+                    <div id="collapseOne" class="panel-collapse collapse {% if 'personal' in request.path %} in {% endif %}">
                         <div class="panel-body">
                             <table class="table">
                                 <tbody><tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href="#">个人状态</a>
+                                        <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href={% url "status" %}>个人状态</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -56,7 +56,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href={% url "listpermissionurl" %}>总体记录</a>
+                                            <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href={% url "totalrecord" %}>总体记录</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -102,18 +102,18 @@
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed"><span class="glyphicon glyphicon-list-alt btn-xs"></span>其他</a>
                         </h4>
                     </div>
-                    <div id="collapseFour" class="panel-collapse collapse {% if 'accounts' in request.path %} in {% endif %}">
+                    <div id="collapseFour" class="panel-collapse collapse {% if 'other' in request.path %} in {% endif %}">
                         <div class="panel-body">
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href={% url "listuserurl" %}>罚款明细</a>
+                                            <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href=#>罚款明细</a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href={% url "listroleurl" %}>系统信息</a>
+                                            <span class="glyphicon glyphicon-tree-conifer btn-xs"></span><a href=#>系统信息</a>
                                         </td>
                                     </tr>
                                 </tbody>

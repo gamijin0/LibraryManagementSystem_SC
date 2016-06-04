@@ -6,21 +6,15 @@ from django.http import HttpResponse
 
 from SystemAction.forms import SaveForm
 
-
-
 # def index(request):
 #     pass
 #     return render_to_response('SystemAction/save.html',locals(),RequestContext(request))
 #
 
-def SaveBook(request):
+def TotalRecord(request):
     pass
-    if (request.method=='POST'):
-        form = SaveBook(request.POST)
-    else:
-        form = SaveForm()
+
     kwvars={
-        'form':form,
         'request':request,
     }
 

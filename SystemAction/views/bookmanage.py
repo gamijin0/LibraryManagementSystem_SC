@@ -14,5 +14,10 @@ if sys.getdefaultencoding() != default_encoding:
     sys.setdefaultencoding(default_encoding)
 
 def BookManage(request):
-    pass
-    return render(request,'SystemAction/bookmanage.html')
+
+    kwvars={
+        'request':request,
+    }
+
+    return render_to_response('SystemAction/bookmanage.html',kwvars,RequestContext(request))
+    #return render(request,'SystemAction/bookmanage.html')
