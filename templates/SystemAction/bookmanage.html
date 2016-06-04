@@ -7,10 +7,14 @@
 {% block content %}
 
     <div class="well">
+    {# 反爬虫验证   #}
     {% csrf_token %}
+
+    {#  书籍表格 #}
     <table class="table table-striped">
         <caption> 图书管理</caption>
         <thead>
+        {#    表头    #}
             <tr>
                 <th>ISBN</th>
                 <th>名称</th>
@@ -23,6 +27,7 @@
             </tr>
         </thead>
 
+        {#   表格内容     #}
         {% for item in booklist %}
 
             <th>{{ item.book_id }}</th>
@@ -34,6 +39,7 @@
             <th>{{ item.inventory }}</th>
             <th>
 
+            {#    按钮      #}
                 <a>
                     <span class="glyphicon glyphicon-pencil btn btn-success">   修改</span>
                 </a>

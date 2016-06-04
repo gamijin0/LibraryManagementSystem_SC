@@ -7,9 +7,13 @@
 {% block content %}
 
     <div class="well">
+
+        {#   表单     #}
         <form method='post' role="form" class="form-horizontal" >
         {% csrf_token %}
 
+
+            {#    表单内容        #}
             {% for item in form %}
                 <div class="form-group">
                     <label class="control-label col-md-2">{{item.label}}</label>
@@ -22,6 +26,7 @@
                 </div>
             {% endfor %}
 
+            {#    表单内容        #}
             <div class="col-md-offset-1">
                 <button type="submit" class="btn btn-danger">入库</button>
             </div>
