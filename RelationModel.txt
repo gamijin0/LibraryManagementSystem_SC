@@ -1,2 +1,53 @@
 关系模式设计
+# 书籍信息表
+Book(
+    book_id(primary key),
+    book_name,
+    author,press,
+    publication_year,
+    introduction,
+    add_time,
+    category_id,
+    inventory
+    remainNumber)
 
+
+# 借书表
+Borrow(
+      borrow_id(primary),
+      user_id(foreign_key),
+      book_id(foreign_key),
+      borrow_date,
+      return_date,
+      term_day)
+
+
+# 用户表
+User(
+    user_id(primary key),
+    user_name,
+    sex,
+    password,
+    age,
+    phone,
+    email,
+    user_type,
+    last_visit
+    )
+
+# 用户等级
+Usertype(
+    type_id(primary key),
+    type_name,
+    max_borrow_num,
+)
+
+# 评论
+Comment(
+    comment_id(primary key),
+    user_id(foreign_key),
+    book_id(foreign_key),
+    date,
+    is_hidden,
+    comment
+)
