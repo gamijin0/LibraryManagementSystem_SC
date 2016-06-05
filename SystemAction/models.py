@@ -16,16 +16,3 @@ class Book(models.Model):
     inventory = models.SmallIntegerField(max_length=4,null=False)
     remain_num = models.IntegerField(max_length=4,null=False,default=0)
 
-
-# 借书表
-class Borrow(models.Model):
-
-    borrow_id = models.CharField(max_length=20,primary_key=True,null=False)
-    #外键
-    user= models.ForeignKey(User)
-    #外键
-    book= models.ForeignKey(Book)
-    borrow_date = models.DateField(auto_now=True)
-    return_date = models.CharField(max_length=50,null=True)
-    term_day = models.IntegerField(default=60)
-

@@ -79,9 +79,10 @@ class Importer:
         #     one.choosePage(self.url + "/accounts/user/add/")
         #     self.CreateUser(person=person)
         #     time.sleep(0.3)
-        for book in Data[7:]:
-            time.sleep(1)
+        for book in Data[21:]:
+            time.sleep(0.8)
             self.choosePage(self.url+"/system/save/")
+            time.sleep(0.8)
             self.SaveBook(book=book)
 
 
@@ -94,7 +95,8 @@ class Importer:
         self.driver.find_element_by_id("id_book_name").send_keys(book[1])
         self.driver.find_element_by_id("id_author").send_keys(book[2])
         self.driver.find_element_by_id("id_press").send_keys(book[3])
-        self.driver.find_element_by_id("id_publication_year").send_keys(book[4])
+        self.driver.find_element_by_id("id_publication_year").send_keys(str(book[4])[0:4])
+        time.sleep(0.3)
         self.driver.find_element_by_id("id_category_id").send_keys(u"普通")
         self.driver.find_element_by_id("id_inventory").send_keys(random.randint(5,12))
 
@@ -102,7 +104,7 @@ class Importer:
 
 
 if(__name__=="__main__"):
-    one = Importer("http://127.0.0.1:8000")
+    one = Importer("http://chaos.ac.cn")
     one.login()
     one.importBookData("books_data.csv")
 
