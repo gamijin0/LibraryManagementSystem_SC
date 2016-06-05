@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}
+    个人状态
+{% endblock %}
+
+{% block content %}
+
+    {#表格#}
+    <table class="table table-hover">
+    {#表头#}
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>名称</th>
+            <th>作者</th>
+            <th>出版社</th>
+            <th>出版年份</th>
+            <th>类型</th>
+            <th>总量</th>
+            <th>剩余数量</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+
+
+
+
+    </table>
+
+
+
+{% endblock %}

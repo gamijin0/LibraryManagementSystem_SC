@@ -35,5 +35,4 @@ class SaveForm(forms.Form):
     inventory.error_messages = {'required': '请输入入库数量'}
 
 
-# 借书表内容
 
