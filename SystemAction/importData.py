@@ -66,29 +66,45 @@ class Importer:
         import csv
         filepath = os.getcwd() + "/../static/other/"
 
-        userData = list()
+        Data = list()
 
         with open(filepath + fileName, mode='r') as f:
             lines = f.readlines()
             for i in lines:
                 data = i.decode('utf-8').split(',')
-                # print i.decode('utf-8').split(',')
-                userData.append([data[1], data[2], data[3], data[9]])
+                Data.append(data)
 
-        for person in userData[1:]:
-            print person[1].encode('utf-8')
-            one.choosePage(self.url + "/accounts/user/add/")
-            self.CreateUser(person=person)
-            time.sleep(0.3)
+        # for person in userData[1:]:
+        #     print person[1].encode('utf-8')
+        #     one.choosePage(self.url + "/accounts/user/add/")
+        #     self.CreateUser(person=person)
+        #     time.sleep(0.3)
+        for book in Data[7:]:
+            time.sleep(1)
+            self.choosePage(self.url+"/system/save/")
+            self.SaveBook(book=book)
+
+
 
         print "图书数据导入完成"
 
+    def SaveBook(self,book):
+        import random
+        self.driver.find_element_by_id("id_book_myid").send_keys(book[0])
+        self.driver.find_element_by_id("id_book_name").send_keys(book[1])
+        self.driver.find_element_by_id("id_author").send_keys(book[2])
+        self.driver.find_element_by_id("id_press").send_keys(book[3])
+        self.driver.find_element_by_id("id_publication_year").send_keys(book[4])
+        self.driver.find_element_by_id("id_category_id").send_keys(u"普通")
+        self.driver.find_element_by_id("id_inventory").send_keys(random.randint(5,12))
+
+        self.driver.find_element_by_id("id_submit").click()
 
 
 if(__name__=="__main__"):
-    one = Importer("http://chaos.ac.cn")
+    one = Importer("http://127.0.0.1:8000")
     one.login()
-    one.importUserData("books_data.csv")
+    one.importBookData("books_data.csv")
 
 
 
