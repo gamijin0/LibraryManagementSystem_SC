@@ -3,11 +3,16 @@ from selenium import webdriver
 import time
 class Importer:
     driver = webdriver.Firefox()
-    url = "http://127.0.0.1:8000/accounts/login/?next=/"
+    url = ""
     username = "chaos"
     password = "xlsd1996"
+
+    def __init__(self,url):
+        self.url = url
+
+
     def login(self):
-        self.driver.get(self.url)
+        self.driver.get(self.url+"/accounts/login/?next=/")
         self.driver.find_element_by_id("id_username").send_keys(self.username)
         self.driver.find_element_by_id("id_password").send_keys(self.password)
         self.driver.find_element_by_id("id_login").click()
@@ -27,13 +32,13 @@ class Importer:
             for i  in lines:
                 data = i.decode('utf-8').split(',')
                 #print i.decode('utf-8').split(',')
-                userData.append([data[1],data[2],data[3],data[8]])
+                userData.append([data[1],data[2],data[3],data[9]])
 
         for person in userData[1:]:
             print person[1].encode('utf-8')
-            one.choosePage("http://127.0.0.1:8000/accounts/user/add/")
+            one.choosePage(self.url+"/accounts/user/add/")
             self.CreateUser(person=person)
-            time.sleep(0.8)
+            time.sleep(0.3)
 
     def CreateUser(self,person):
         self.driver.find_element_by_id("id_username").send_keys(person[0])
@@ -41,7 +46,7 @@ class Importer:
         if("@" in str(person[3])):
             self.driver.find_element_by_id("id_email").send_keys(person[3])
         else:
-            self.driver.find_element_by_id("id_email").send_keys(str(person[3])+"@qq.com")
+            self.driver.find_element_by_id("id_email").send_keys(str(person[3]).strip()+"@qq.com")
         self.driver.find_element_by_id("id_nickname").send_keys(person[1])
 
         if(person[2]==u"男"):
@@ -59,9 +64,8 @@ class Importer:
 
 
 if(__name__=="__main__"):
-    one = Importer()
+    one = Importer("http://chaos.ac.cn")
     one.login()
-    one.choosePage("http://127.0.0.1:8000/accounts/user/add/")
     one.importUserData("2014-wulian.csv")
 
 
