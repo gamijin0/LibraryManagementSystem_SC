@@ -40,6 +40,8 @@ class Importer:
             self.CreateUser(person=person)
             time.sleep(0.3)
 
+        print "用户数据导入完成"
+
     def CreateUser(self,person):
         self.driver.find_element_by_id("id_username").send_keys(person[0])
         self.driver.find_element_by_id("id_password").send_keys(person[0][-6:])
@@ -59,14 +61,34 @@ class Importer:
 
         self.driver.find_element_by_id("id_submit").click()
 
+    def importBookData(self,fileName):
+        import os
+        import csv
+        filepath = os.getcwd() + "/../static/other/"
 
+        userData = list()
+
+        with open(filepath + fileName, mode='r') as f:
+            lines = f.readlines()
+            for i in lines:
+                data = i.decode('utf-8').split(',')
+                # print i.decode('utf-8').split(',')
+                userData.append([data[1], data[2], data[3], data[9]])
+
+        for person in userData[1:]:
+            print person[1].encode('utf-8')
+            one.choosePage(self.url + "/accounts/user/add/")
+            self.CreateUser(person=person)
+            time.sleep(0.3)
+
+        print "图书数据导入完成"
 
 
 
 if(__name__=="__main__"):
     one = Importer("http://chaos.ac.cn")
     one.login()
-    one.importUserData("2014-wulian.csv")
+    one.importUserData("books_data.csv")
 
 
 
