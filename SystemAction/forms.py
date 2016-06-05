@@ -5,6 +5,7 @@ from django import forms
 #  表单内容
 class SaveForm(forms.Form):
 
+
     book_myid = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'class': 'form-control'}))
     book_myid.label = u"书籍编号"
     book_myid.error_messages={'required':'请输入书籍编号'}

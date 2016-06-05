@@ -7,22 +7,52 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from website.common.CommonPaginator import SelfPaginator
 from UserManage.views.permission import PermissionVerify
-
+from SystemAction.views.savebook import SaveForm
 from SystemAction.models import Book
+
 
 
 @login_required()
 @PermissionVerify()
 def BookManage(request):
-    # 服务器请求函数
-    booklist = Book.objects.all()
+    # 修改书籍信息
+    if(request.method=="POST"):
 
-    kwvars={
-        'request':request,
-        'booklist':booklist
-    }
+        #print(request.POST)
 
-    return render_to_response('SystemAction/bookmanage.html',kwvars,RequestContext(request))
+        res=ChenkValid(request.POST)
+        if(res['valid']==True):
+            #表单有效
+            pass
+            # 查询数据库内对象
+            oneToEdit = Book.objects.get(book_id=request.POST['book_id'])
+            oneToEdit.author=request.POST['author']
+            oneToEdit.book_name = request.POST['book_name']
+            oneToEdit.category_id = request.POST['category_id']
+
+                #计算新增数量
+            addedCounts = int(request.POST['inventory'])-oneToEdit.inventory
+            oneToEdit.inventory = int(request.POST['inventory'])
+            oneToEdit.remain_num = oneToEdit.remain_num+addedCounts
+            oneToEdit.save()
+        else:
+            #表单中有错误
+            return HttpResponse(str(res['errors']))
+
+        # 存储成功后跳转到图书管理页面
+        return HttpResponseRedirect(reverse('bookmanage'))
+
+
+    else:
+        # 服务器请求函数
+        booklist = Book.objects.all()
+
+        kwvars={
+            'request':request,
+            'booklist':booklist
+        }
+
+        return render_to_response('SystemAction/bookmanage.html',kwvars,RequestContext(request))
 
 
 @login_required()
@@ -35,32 +65,14 @@ def DelBook(request,book_id):
     return HttpResponseRedirect(reverse('bookmanage'))
 
 
-@login_required()
-@PermissionVerify()
-def EditBook(request,book_id):
-    #修改书籍信息
-    from SystemAction.views.savebook import SaveForm
-    from SystemAction.models import Book
+def ChenkValid(POST):
 
-    if(request.method=="POST"):
+    valid = True
+    erros = list()
 
-        form = SaveForm(request.POST)
-        # 构造数据库对象
-        oneToSave = Book(
-            book_id=form.cleaned_data['book_myid'],
-            book_name=form.cleaned_data['book_name'],
-            author=form.cleaned_data['author'],
-            press=form.cleaned_data['press'],
-            publication_year=form.cleaned_data['publication_year'],
-            category_id=form.cleaned_data['category_id'],
-            inventory=form.cleaned_data['inventory'],
-            remain_num=form.cleaned_data['inventory'],
-        )
-        # 存入数据库
-        oneToSave.save()
-        # 存储成功后跳转到图书管理页面
-        return HttpResponseRedirect(reverse('bookmanage'))
+    import datetime
+    if(POST['publication_year']<1800 or int(POST['publication_year'])>int(str(datetime.date.today())[0:4])):
+        erros.append("Invalid publication_year")
+        valid=False
 
-    else:
-        pass
-    return HttpResponse(str(request))
+    return {'valid':valid,'errors':erros}
