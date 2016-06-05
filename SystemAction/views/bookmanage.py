@@ -39,5 +39,28 @@ def DelBook(request,book_id):
 @PermissionVerify()
 def EditBook(request,book_id):
     #修改书籍信息
-    pass
-    return HttpResponse(str(book_id))
+    from SystemAction.views.savebook import SaveForm
+    from SystemAction.models import Book
+
+    if(request.method=="POST"):
+
+        form = SaveForm(request.POST)
+        # 构造数据库对象
+        oneToSave = Book(
+            book_id=form.cleaned_data['book_myid'],
+            book_name=form.cleaned_data['book_name'],
+            author=form.cleaned_data['author'],
+            press=form.cleaned_data['press'],
+            publication_year=form.cleaned_data['publication_year'],
+            category_id=form.cleaned_data['category_id'],
+            inventory=form.cleaned_data['inventory'],
+            remain_num=form.cleaned_data['inventory'],
+        )
+        # 存入数据库
+        oneToSave.save()
+        # 存储成功后跳转到图书管理页面
+        return HttpResponseRedirect(reverse('bookmanage'))
+
+    else:
+        pass
+    return HttpResponse(str(request))
