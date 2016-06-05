@@ -8,15 +8,15 @@
 
     <div class="well">
 
-        {#   表单     #}
-        <form method='post' role="form" class="form-horizontal" >
-        {% csrf_token %}
 
+        {#   表单     #}
+        <form method='post' role="form" class="form-horizontal " >
+        {% csrf_token %}
 
             {#    表单内容        #}
             {% for item in form %}
                 <div class="form-group">
-                    <label class="control-label col-md-2">{{item.label}}</label>
+                    <label class="control-label col-md-2 ">{{item.label}}</label>
                     <div class="col-md-4">
                         {{item}}
                     </div>

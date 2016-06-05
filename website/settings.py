@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'UserManage',
     'SystemAction',
     'PersonalAction',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
