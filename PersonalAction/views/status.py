@@ -30,10 +30,11 @@ def Status(request):
 @PermissionVerify()
 def ReturnBook(request,borrow_id):
     from PersonalAction.models import Borrow
+    from django.utils import timezone
     import datetime
 
     oneToReturn=Borrow.objects.get(borrow_id=borrow_id)
-    oneToReturn.return_date= datetime.datetime.today()
+    oneToReturn.return_date= timezone.now()
     oneToReturn.book.remain_num+=1
     oneToReturn.book.save()
     oneToReturn.save()

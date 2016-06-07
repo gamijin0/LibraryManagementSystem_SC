@@ -60,8 +60,9 @@ def BorrowBook(request,book_id):
         import datetime
         from PersonalAction.models import Borrow
         from UserManage.models import User
+        from django.utils import timezone
         oneToBorrow = Borrow(
-            borrow_id=str(oneToSave.book_id) + str(request.user.id) + str(datetime.date.today())
+            borrow_id=str(oneToSave.book_id) + str(request.user.id) + str(timezone.now())
         )
         oneToBorrow.user = request.user
         oneToBorrow.book = oneToSave

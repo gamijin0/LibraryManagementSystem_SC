@@ -13,7 +13,7 @@ class Borrow(models.Model):
     user= models.ForeignKey(User)
     #外键
     book= models.ForeignKey(Book)
-    borrow_date = models.DateField(auto_now=True)
+    borrow_date = models.DateTimeField(auto_now_add=True)
     return_date = models.CharField(max_length=50,null=True)
     term_day = models.IntegerField(default=60)
 
