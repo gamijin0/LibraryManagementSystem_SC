@@ -106,7 +106,8 @@ class Importer:
 if(__name__=="__main__"):
     one = Importer("http://127.0.0.1:8000")
     one.login()
-    one.importBookData("books_data.csv")
+    #one.importBookData("books_data.csv")
+    #one.importUserData("2014-wulina.csv")
 
 
 
