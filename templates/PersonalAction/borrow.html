@@ -10,49 +10,49 @@
     {# 反爬虫验证   #}
     {% csrf_token %}
 
-<table class="table table-hover table-responsive">
-        <caption> 借书</caption>
-        <thead>
-        {#    表头    #}
-            <tr>
-                <th>ISBN</th>
-                <th>名称</th>
-                <th>作者</th>
-                <th>出版社</th>
-                <th>出版年份</th>
-                <th>类型</th>
-                <th>总量</th>
-                <th>剩余数量</th>
-                <th>操作</th>
-            </tr>
-        </thead>
-    {#   表格内容     #}
-        {% for item in booklist %}
-            <tr>
+        <table id="mytable" class="table table-hover table-responsive">
+                <caption> 借书</caption>
+                <thead>
+                {#    表头    #}
+                    <tr>
+                        <th>ISBN</th>
+                        <th>名称</th>
+                        <th>作者</th>
+                        <th>出版社</th>
+                        <th>出版年份</th>
+                        <th>类型</th>
+                        <th>总量</th>
+                        <th>剩余数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+            {#   表格内容     #}
+                {% for item in booklist %}
+                    <tr>
 
-            <th>{{ item.book_id }}</th>
-            <th>{{ item.book_name}}</th>
-            <th>{{ item.author}}</th>
-            <th>{{ item.press}}</th>
-            <th>{{ item.publication_year }}</th>
-            <th>{{ item.category_id }}</th>
-            <th>{{ item.inventory }}</th>
-            <th>{{ item.remain_num}}</th>
-            <th>
-                     {#    按钮      #}
-                <a  href={% url 'borrowbook' item.book_id  %} onclick= "return confirm('是否确认借书？')">
-                    <span class="btn  btn-danger" style="font-family: 微软雅黑">
-                        借书
-                    </span>
-                </a>
+                    <th>{{ item.book_id }}</th>
+                    <th>{{ item.book_name}}</th>
+                    <th>{{ item.author}}</th>
+                    <th>{{ item.press}}</th>
+                    <th>{{ item.publication_year }}</th>
+                    <th>{{ item.category_id }}</th>
+                    <th>{{ item.inventory }}</th>
+                    <th>{{ item.remain_num}}</th>
+                    <th>
+                             {#    按钮      #}
+                        <a  href={% url 'borrowbook' item.book_id  %} onclick= "return confirm('是否确认借书？')">
+                            <span class="btn  btn-danger" style="font-family: 微软雅黑">
+                                借书
+                            </span>
+                        </a>
 
-{#                    <button class="btn btn-danger" type="submit" onclick= "return confirm('是否确认借书？')">#}
-{#                        借书#}
-{#                    </button>#}
+        {#                    <button class="btn btn-danger" type="submit" onclick= "return confirm('是否确认借书？')">#}
+        {#                        借书#}
+        {#                    </button>#}
 
-                </th>
-            </tr>
-     {% endfor %}
-</table>
+                        </th>
+                    </tr>
+             {% endfor %}
+        </table>
     </div>
 {% endblock %}
