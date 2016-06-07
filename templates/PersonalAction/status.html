@@ -45,7 +45,7 @@
                     <th>{{ item.remain_num}}</th>
                     <th>
                              {#    按钮      #}
-                        <a  href={% url 'borrowbook' item.book_id  %} onclick= "return confirm('是否确认还书？')">
+                        <a  href={% url 'return' item.book_id  %} onclick= "return confirm('是否确认还书？')">
                             <span class="btn  btn-success" style="font-family: 微软雅黑">
                                 还书
                             </span>
