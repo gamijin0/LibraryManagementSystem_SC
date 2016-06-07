@@ -54,6 +54,6 @@ def BorrowBook(request,book_id):
         oneToBorrow.book = oneToSave
         oneToBorrow.save()
         # 存储成功后跳转到借书页面
-        return HttpResponseRedirect(reverse('borrow'))
+        return HttpResponseRedirect(reverse('status'))
     else:
         return HttpResponse(str(res['errors']))

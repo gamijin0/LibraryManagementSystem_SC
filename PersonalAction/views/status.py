@@ -12,5 +12,21 @@ from django.http import HttpResponse
 @PermissionVerify()
 def Status(request):
     user = request.user
-    Borrow.objects.get(user=user)
-    return render(request,'PersonalAction/status.html')
+    borrowlist = Borrow.objects.filter(user=user)
+    booklist =list()
+    for b in borrowlist:
+        booklist.append(b.book)
+
+    kwvars={
+        'request':request,
+        'booklist':booklist,
+    }
+
+    return render_to_response('PersonalAction/status.html',kwvars,RequestContext(request))
+
+
+
+@login_required()
+@PermissionVerify()
+def ReturnBook(request):
+    pass
