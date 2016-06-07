@@ -29,7 +29,7 @@ def SaveBook(request):
                 publication_year=form.cleaned_data['publication_year'],
                 category_id=form.cleaned_data['category_id'],
                 inventory=form.cleaned_data['inventory'],
-                remain_num=form.cleaned_data['remain_num'],
+                remain_num=form.cleaned_data['inventory'],
                 )
             #存入数据库
             oneToSave.save()

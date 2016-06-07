@@ -1,4 +1,4 @@
-# coding =utf-8
+# coding:utf-8
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response,RequestContext,render
 from django.shortcuts import HttpResponse,render,render_to_response,HttpResponseRedirect
@@ -43,7 +43,7 @@ def Borrow(request):
             'booklist':booklist
         }
 
-        return render_to_response('SystemAction/borrow.html',kwvars,RequestContext(request))
+        return render_to_response('PersonalAction/borrow.html',kwvars,RequestContext(request))
 
 
 def ChenkRemain(POST):
