@@ -22,14 +22,14 @@ def SaveBook(request):
 
             #构造数据库对象
             oneToSave = Book(
-                book_id=form.cleaned_data['book_myid'],
+                book_id=form.cleaned_data['book_id'],
                 book_name=form.cleaned_data['book_name'],
                 author=form.cleaned_data['author'],
                 press=form.cleaned_data['press'],
                 publication_year=form.cleaned_data['publication_year'],
                 category_id=form.cleaned_data['category_id'],
                 inventory=form.cleaned_data['inventory'],
-                remain_num=form.cleaned_data['inventory'],
+                remain_num=form.cleaned_data['remain_num'],
                 )
             #存入数据库
             oneToSave.save()

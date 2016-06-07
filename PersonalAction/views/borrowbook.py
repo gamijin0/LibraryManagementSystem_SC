@@ -1,4 +1,4 @@
-# coding: utf-8
+# coding =utf-8
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response,RequestContext,render
 from django.shortcuts import HttpResponse,render,render_to_response,HttpResponseRedirect
@@ -12,34 +12,27 @@ from SystemAction.models import Book
 
 @login_required()
 @PermissionVerify()
-def BookManage(request):
+def Borrow(request):
     # 提取书籍信息
     if(request.method=="POST"):
-
-        #print(request.POST)
-
-        res=ChenkValid(request.POST)
-        if(res['valid']==True):
-            #表单有效
-            pass
             # 查询数据库内对象
-            oneToEdit = Book.objects.get(book_id=request.POST['book_id'])
-            oneToEdit.author=request.POST['author']
-            oneToEdit.book_name = request.POST['book_name']
-            oneToEdit.category_id = request.POST['category_id']
+        res =ChenkRemain(request.POST)
+        if(res['valid']==True):
+            oneToSave = Book.objects.get(book_id=request.POST['book_id'])
+            oneToSave.remain_num = oneToSave.remain_num - 1
+        # oneToSave.author=request.POST['author']
+        # oneToSave.book_name = request.POST['book_name']
+        # oneToSave.category_id = request.POST['category_id']
 
                 #计算新增数量
-            addedCounts = int(request.POST['inventory'])-oneToEdit.inventory
-            oneToEdit.inventory = int(request.POST['inventory'])
-            oneToEdit.remain_num = oneToEdit.remain_num+addedCounts
-            oneToEdit.save()
+        # addedCounts = int(request.POST['inventory'])-oneToSave.inventory
+        # oneToSave.inventory = int(request.POST['inventory'])
+        # oneToSave.remain_num = oneToSave.remain_num+addedCounts-1
+            oneToSave.save()
+        # 存储成功后跳转到借书页面
+            return HttpResponseRedirect(reverse('borrow'))
         else:
-            #表单中有错误
             return HttpResponse(str(res['errors']))
-
-        # 存储成功后跳转到图书管理页面
-        return HttpResponseRedirect(reverse('bookmanage'))
-
 
     else:
         # 服务器请求函数
@@ -50,7 +43,16 @@ def BookManage(request):
             'booklist':booklist
         }
 
-        return render_to_response('SystemAction/bookmanage.html',kwvars,RequestContext(request))
+        return render_to_response('SystemAction/borrow.html',kwvars,RequestContext(request))
 
-def Borrow(requests):
-    pass
+
+def ChenkRemain(POST):
+
+    valid = True
+    erros = list()
+
+    if(POST['remain_num']<=0):
+        erros.append("There is no book to lend!")
+        valid=False
+
+    return {'valid':valid,'errors':erros}
