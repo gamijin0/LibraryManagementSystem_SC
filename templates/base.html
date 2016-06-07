@@ -19,7 +19,11 @@
 
         <script>
             $(document).ready(function(){
-                $('#mytable').DataTable();
+                $('#mytable').dataTable({
+                    "aoColumnDefs":[
+                        {   "sWidth": "20%","aTargets":[0]}
+                    ]
+                })
             });
         </script>
         
