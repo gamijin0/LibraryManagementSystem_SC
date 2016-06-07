@@ -62,7 +62,7 @@ def BorrowBook(request,book_id):
         from UserManage.models import User
         from django.utils import timezone
         oneToBorrow = Borrow(
-            borrow_id=str(oneToSave.book_id) + str(request.user.id) + str(timezone.now())
+            borrow_id= str(request.user.id) + str(timezone.now())[:-6].replace(':','-').replace('.','-').replace(' ','-')
         )
         oneToBorrow.user = request.user
         oneToBorrow.book = oneToSave

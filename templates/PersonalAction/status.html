@@ -27,9 +27,6 @@
                         <th>出版社</th>
                         <th>出版年份</th>
                         <th>类型</th>
-                        <th>总量</th>
-                        <th>剩余数量</th>
-                        <th>操作</th>
                     </tr>
                 </thead>
             {#   表格内容     #}
@@ -42,8 +39,6 @@
                     <th>{{ item.book.press}}</th>
                     <th>{{ item.book.publication_year }}</th>
                     <th>{{ item.book.category_id }}</th>
-                    <th>{{ item.book.inventory }}</th>
-                    <th>{{ item.book.remain_num}}</th>
                     <th>
                              {#    按钮      #}
                         <a  href={% url 'return' item.borrow_id  %} onclick= "return confirm('是否确认还书？')">
