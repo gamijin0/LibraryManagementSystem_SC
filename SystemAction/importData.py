@@ -4,7 +4,7 @@ import time
 class Importer:
     driver = webdriver.Firefox()
     url = ""
-    username = "chaos"
+    username = "root"
     password = "xlsd1996"
 
     def __init__(self,url):
@@ -61,7 +61,7 @@ class Importer:
 
         self.driver.find_element_by_id("id_submit").click()
 
-    def importBookData(self,fileName):
+    def importBookData(self,fileName,num=15):
         import os
         import csv
         filepath = os.getcwd() + "/../static/other/"
@@ -79,7 +79,7 @@ class Importer:
         #     one.choosePage(self.url + "/accounts/user/add/")
         #     self.CreateUser(person=person)
         #     time.sleep(0.3)
-        for book in Data[21:]:
+        for book in Data[1:num+1]:
             time.sleep(0.8)
             self.choosePage(self.url+"/system/save/")
             time.sleep(0.8)
@@ -106,8 +106,8 @@ class Importer:
 if(__name__=="__main__"):
     one = Importer("http://127.0.0.1:8000")
     one.login()
-    #one.importBookData("books_data.csv")
-    #one.importUserData("2014-wulina.csv")
+    #one.importBookData("books_data.csv",num=15)
+    one.importUserData("2014-wulina.csv")
 
 
 
