@@ -91,7 +91,7 @@ class Importer:
 
     def SaveBook(self,book):
         import random
-        self.driver.find_element_by_id("id_book_myid").send_keys(book[0])
+        self.driver.find_element_by_id("id_book_id").send_keys(book[0])
         self.driver.find_element_by_id("id_book_name").send_keys(book[1])
         self.driver.find_element_by_id("id_author").send_keys(book[2])
         self.driver.find_element_by_id("id_press").send_keys(book[3])
@@ -104,7 +104,7 @@ class Importer:
 
 
 if(__name__=="__main__"):
-    one = Importer("http://chaos.ac.cn")
+    one = Importer("http://127.0.0.1:8000")
     one.login()
     one.importBookData("books_data.csv")
 

@@ -3,7 +3,8 @@ from django import forms
 
 # 借书表内容
 class BorrowForm(forms.Form):
-    pass
+
+    borrow_id = forms.CharField()
 
 
 
