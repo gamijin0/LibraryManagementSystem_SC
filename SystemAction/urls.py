@@ -5,6 +5,7 @@ urlpatterns = patterns('SystemAction.views',
     url(r'^bookmanage/$','bookmanage.BookManage',name='bookmanage'),
     url(r'^totralrecord/$','totalrecord.TotalRecord',name='totalrecord'),
     url(r'^bookmanage/delbook/(.+)/$','bookmanage.DelBook',name='delbook'),
+    url(r'^totalrecord/$','totalrecord.TotalRecord',name='totalrecord'),
     #url(r'^bookmanage/editbook/(.+)/$','bookmanage.EditBook',name='editbook'),
 
 )

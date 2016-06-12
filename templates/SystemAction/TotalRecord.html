@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    个人状态
+{% endblock %}
+
+{% block content %}
+
+    <div id="mydiv" class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">系统操作记录</div>
+
+        <table id="mytable" class="table table-hover table-bordered table-responsive">
+{#                <caption> 已借书目</caption>#}
+                <thead>
+                {#    表头    #}
+                    <tr>
+                        <th>用户名</th>
+                        <th>操作信息</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+            {#   表格内容     #}
+                {% for item in recordlist %}
+                    <tr>
+                    <th>{{ item.user.username }}</th>
+                    <th>{{ item.record_introduct }}</th>
+                    <th>{{ item.record_date}}</th>
+             {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}

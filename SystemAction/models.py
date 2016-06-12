@@ -16,3 +16,10 @@ class Book(models.Model):
     inventory = models.SmallIntegerField(max_length=4,null=False)
     remain_num = models.IntegerField(max_length=4,null=False,default=0)
 
+class Record(models.Model):
+    record_id = models.CharField(max_length=50,primary_key=True,null=False)
+    user = models.ForeignKey(User)
+    record_date = models.DateTimeField(auto_now_add=True,null=False)
+    #category:[editbook,deletebook,savebook,borrowbook,returnbook,login]
+    record_category = models.CharField(max_length=20,null=False)
+    record_introduct = models.CharField(max_length=1000)

@@ -8,6 +8,8 @@ from UserManage.views.permission import PermissionVerify
 from PersonalAction.models import Borrow
 from SystemAction.models import Book
 from django.http import HttpResponse,HttpResponseRedirect
+from SystemAction.models import Record
+from django.utils import timezone
 # Create your views here.
 
 @login_required()
@@ -38,5 +40,14 @@ def ReturnBook(request,borrow_id):
     oneToReturn.book.remain_num+=1
     oneToReturn.book.save()
     oneToReturn.save()
+    # 添加对应的操作记录
+    oneRecord = Record(record_id=(
+        "Re_" + str(request.user.id) + "_" + str(request.user.id) + str(timezone.now())[:-6].replace(':',
+                                                                                                     '-').replace(
+            '.', '-').replace(' ', '-')),
+        user=request.user, record_category="returnbook",
+        record_introduct=u"用户[" + request.user.username +u"]归还了书籍[" + oneToReturn.book_name + "]"
+    )
+    oneRecord.save()
 
     return HttpResponseRedirect(reverse("status"))

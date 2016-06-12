@@ -12,6 +12,8 @@ from UserManage.views.permission import PermissionVerify
 from django.contrib import auth
 from django.contrib.auth import get_user_model
 from UserManage.forms import LoginUserForm,ChangePasswordForm,AddUserForm,EditUserForm
+from SystemAction.models import Record
+from django.utils import timezone
 
 def LoginUser(request):
     '''用户登录view'''
@@ -27,6 +29,15 @@ def LoginUser(request):
         form = LoginUserForm(request, data=request.POST)
         if form.is_valid():
             auth.login(request, form.get_user())
+
+            #添加对应的操作记录
+            oneRecord = Record(record_id=(
+                "Re_" + str(request.user.id) + "_" + str(request.user.id) + str(timezone.now())[:-6].replace(':','-').replace('.', '-').replace(' ', '-')),
+                user=request.user, record_category="login",
+                record_introduct=u"用户[" + request.user.username + u"]登录了系统"
+            )
+            oneRecord.save()
+
             return HttpResponseRedirect(request.POST['next'])
     else:
         form = LoginUserForm(request)

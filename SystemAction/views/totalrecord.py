@@ -12,12 +12,13 @@ from SystemAction.forms import SaveForm
 #
 
 def TotalRecord(request):
-    from SystemAction.models import Borrow
+    from SystemAction.models import Record
+    recordList = Record.objects.all()
 
     kwvars={
         'request':request,
-
+        'recordlist':recordList,
     }
 
-    return render_to_response('SystemAction/save.html',kwvars,RequestContext(request))
+    return render_to_response('SystemAction/TotalRecord.html',kwvars,RequestContext(request))
     #return render(request,'SystemAction/save.html',{'form':form})
