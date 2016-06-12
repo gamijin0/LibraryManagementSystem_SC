@@ -49,6 +49,8 @@ def ChenkRemain(user,book_id):
 
     return {'valid':valid,'errors':erros}
 
+@login_required()
+@PermissionVerify()
 def BorrowBook(request,book_id):
     # 查询数据库内对象
     res = ChenkRemain(request.user,book_id)
