@@ -15,6 +15,7 @@ def TotalRecord(request):
     from SystemAction.models import Record
     recordList = Record.objects.all()
 
+
     kwvars={
         'request':request,
         'recordlist':recordList,
