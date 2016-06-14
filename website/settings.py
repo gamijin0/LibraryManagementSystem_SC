@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'SystemAction',
     'PersonalAction',
     'south',
+    'Other',
 )
 
 MIDDLEWARE_CLASSES = (
