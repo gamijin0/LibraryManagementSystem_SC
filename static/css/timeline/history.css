@@ -10,7 +10,7 @@ body{_background-image:url(about:blank);/*用浏览器空白页面作为背景*/
 .title{height:95px;line-height:95px;text-indent:280px;}
 .title h2{color:#7c7c7c;font-size:18px;font-weight:500;}
 #circle{
-	width:83px;height:83px;position:absolute;top:0;left:390px;border:6px solid rgba(0,0,0,0.15);border-radius:95px;text-indent:0;text-align:center;
+	width:83px;height:83px;position:absolute;top:10px;left:395px;border:6px solid rgba(0,0,0,0.15);border-radius:95px;text-indent:0;text-align:center;
 	-webkit-transition:all 0.3s linear;
 	-moz-transition:all 0.3s linear;
 	-o-transition:all 0.3s linear;
@@ -31,7 +31,7 @@ body{_background-image:url(about:blank);/*用浏览器空白页面作为背景*/
 #circle:hover .circlecontent{display:none;}
 #circle span{font-size:18px;color:#b0b0b0;}
 #circle .clock{
-	background:url(../../images/timeline/clock.png) no-repeat 0 0;width:83px;height:83px;position:absolute;top:0;left:0;display:none;
+	background:url(../../images/timeline/clock.png) no-repeat 0 0;width:83px;height:83px;position:absolute;top:-5px;left:-5px;display:none;
 	-webkit-transition:all 0.5s linear;
 	-moz-transition:all 0.5s linear;
 	-o-transition:all 0.5s linear;
