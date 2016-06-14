@@ -45,7 +45,7 @@ body{_background-image:url(about:blank);/*用浏览器空白页面作为背景*/
 .timeblock .numf{background-position:0px -48px;}
 .timeblock .nums{background-position:0px 0px;}
 .timeblock .numt{background-position:0px -24px;}
-.timeblock .numfo{background-position:0px -72px;}
+.timeblock .numfo{background-position:0px -143px;}
 #content{height:355px;width:1180px;overflow:hidden;background:url(../../images/timeline/vertical.png) no-repeat 434px 2px;padding-top:10px;}
 .list{overflow:hidden;position:relative;}
 .list li{height:110px;vertical-align:bottom;overflow:hidden;position:relative;}
@@ -58,15 +58,15 @@ body{_background-image:url(about:blank);/*用浏览器空白页面作为背景*/
 .year{font-size:12px;color:#AEAEAE;margin-right:10px;}
 .point{width:55px;height:55px;position:absolute;top:0;left:409px;background:url(../../images/timeline/point.png) no-repeat 0px 18px;overflow:hidden;}
 .point b{
-	height:16px;width:16px;background:#fff;display:block;margin:17px 0 0 19px;border-radius:18px;border:2px solid #6bc30d;
+	height:30px;width:30px;background:#fff;display:block;margin:17px 0 0 19px;border-radius:18px;border:2px solid #6bc30d;
 	-webkit-transition:all 0.1s linear;
 	-moz-transition:all 0.1s linear;
 	-o-transition:all 0.1s linear;
 	transition:all 0.1s linear;
 	position:absolute;
-	top:0;left:0;
+	top:0;left:-5px;
 }
-.thiscur .point b{border:7px solid rgba(107,195,13,0.6);margin:12px 0px 0px 14px;border-radius:52px;}
+.thiscur .point b{border:7px solid rgba(107,195,13,0.6);margin:12px 0px 0px 18px;border-radius:52px;}
 .thiscur .histt a{color:#6bc30d;}
 .histt a{
 	font-size:24px;color:#747474;
