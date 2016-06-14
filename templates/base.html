@@ -13,6 +13,8 @@
         <script src="/static/js/jquery-1.11.0.min.js"></script>
         <script src="/static/js/bootstrap.min.js"></script>
         <script src="/static/js/jquery.dataTables.min.js"></script>
+        <!-- Timeline -->
+
 
         <link href="/static/css/dataTables.bootstrap.min.css">
         <link href="/static/css/mystyle.css">
@@ -52,7 +54,34 @@
                 })
             });
         </script>
-        
+        <script>
+            $(document).ready(function(){
+                $('#myTotalRecordTable').dataTable({
+                    "aoColumnDefs":[
+                        {   "sWidth": "10%","aTargets":[0]},
+                        {   "sWidth": "50%","aTargets":[1]},
+                        {   "sWidth": "20%","aTargets":[2]},
+                      ],
+                     "oLanguage": {
+                         "sProcessing": "正在加载中......",
+                         "sLengthMenu": "每页显示 _MENU_ 条记录",
+                         "sZeroRecords": "正在加载中......",
+                         "sEmptyTable": "查询无数据！",
+                         "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                         "sInfoEmpty": "显示0到0条记录",
+                         "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+                         "sSearch": "当前数据搜索:",
+                         "oPaginate": {
+                             "sFirst": "首页",
+                             "sPrevious": "上一页",
+                             "sNext": "下一页",
+                             "sLast": "末页"
+                         }
+                     },"bJQueryUI": true,
+                 "sScrollY": "500px", "sScrollX": "100%"
+                })
+            });
+        </script>
         {% block head %}{% endblock %}
         <style type="text/css">
             body {
