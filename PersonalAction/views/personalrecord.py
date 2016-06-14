@@ -13,12 +13,15 @@ from SystemAction.forms import SaveForm
 def PersonalRecord(request):
     from SystemAction.models import Record
     recordList = Record.objects.filter(user=request.user)
+
     for item in recordList:
         if(item.record_category=="editbook" or item.record_category == "savebook" or item.record_category=="deletebook"):
-            recordList.delete()
+            recordList.delete(item)
+
     kwvars={
         'request':request,
         'recordlist':recordList,
     }
+
 
     return render_to_response('PersonalAction/PersonalRecord.html',kwvars,RequestContext(request))

@@ -8,7 +8,7 @@
 <body>
 {% block content %}
     <link rel="stylesheet" type="text/css" href="/static/css/timeline/history.css">
-    <script type="text/javascript" src="/static/js/timeline/jquery.js"></script>
+{#    <script type="text/javascript" src="/static/js/timeline/jquery.js"></script>#}
     <script type="text/javascript" src="/static/js/timeline/jquery.mousewheel.js"></script>
     <script type="text/javascript" src="/static/js/timeline/jquery.easing.js"></script>
     <script type="text/javascript" src="/static/js/timeline/history.js"></script>
@@ -24,45 +24,47 @@
 	<div class="title">
 		<h2>个人记录</h2>
 		<div id="circle">
-{#			<div class="cmsk"></div>#}
+			<div class="cmsk"></div>
 			<div class="circlecontent">
-{#				<div thisyear="2013" class="timeblock">#}
-{#					<span class="numf"></span>#}
-{#					<span class="nums"></span>#}
-{#					<span class="numt"></span>#}
-{#					<span class="numfo"></span>#}
-{#					<div class="clear"></div>#}
-{#				</div>#}
+				<div thisyear="2013" class="timeblock">
+					<span class="numf"></span>
+					<span class="nums"></span>
+					<span class="numt"></span>
+					<span class="numfo"></span>
+					<div class="clear"></div>
+				</div>
 				<div class="timeyear">YEAR</div>
 			</div>
-{#			<a href="#" class="clock"></a>#}
+			<a href="#" class="clock"></a>
 		</div>
 	</div>
 
 	<div id="content">
 
 		<ul class="list">
-			<li style="margin-top:-110px;">
-				<div class="liwrap">
-					<div class="lileft">
-						<div class="date">
-{#                            {% for item in recordlist %}#}
-							<span class="year">{{ item.record_date.year }}</span>
-							<span class="md">{{ item.record_date.date}}</span>
-{#                            {% endfor %}#}
-						</div>
-					</div>
 
-					<div class="point"><b></b></div>
+            {% for item in recordlist %}
 
-					<div class="liright">
-{#                        {% for item in recordlist %}#}
-						<div class="histt">{{ item.record_introduct }}</div>
-{#                        {% endfor %}#}
-{#						<div class="hisct">{{ item.record_introduct }}</div>#}
-					</div>
-				</div>
-			</li>
+                    <li >
+                        <div class="liwrap">
+                            <div class="lileft">
+                                <div class="date">
+{#                                    <span class="year">{{ item.record_date.year }}</span>#}
+                                    <span class="md">{{ item.record_date.date}}</span>
+                                </div>
+                            </div>
+
+                            <div class="point"><b></b></div>
+
+                            <div class="liright">
+                                <div class="histt">{{ item.record_introduct }}</div>
+{#                                <div class="hisct">{{ item.record_introduct }}</div>#}
+                            </div>
+                        </div>
+                    </li>
+
+            {% endfor %}
+
 
 		</ul>
 	</div>

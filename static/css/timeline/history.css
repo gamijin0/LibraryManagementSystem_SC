@@ -2,7 +2,7 @@
 *{margin:0;padding:0;list-style-type:none;}
 a,img{border:0;}
 body{_background-image:url(about:blank);/*用浏览器空白页面作为背景*/_background-attachment:fixed; /* prevent screen flash in IE6 确保滚动条滚动时，元素不闪动*/ } 
-body{color:#535353;font-size:12px;font-family: "arial","微软雅黑";background:#f0f1f1;}
+/*body{color:#535353;font-size:12px;font-family: "arial","微软雅黑";background:#f0f1f1;}*/
 .clear{clear:both;display:block;height:0;overflow:hidden;}
 
 /* history */
@@ -31,7 +31,7 @@ body{color:#535353;font-size:12px;font-family: "arial","微软雅黑";background
 #circle:hover .circlecontent{display:none;}
 #circle span{font-size:18px;color:#b0b0b0;}
 #circle .clock{
-	background:url(../images/clock.png) no-repeat 0 0;width:83px;height:83px;position:absolute;top:0;left:0;display:none;
+	background:url(../../images/timeline/clock.png) no-repeat 0 0;width:83px;height:83px;position:absolute;top:0;left:0;display:none;
 	-webkit-transition:all 0.5s linear;
 	-moz-transition:all 0.5s linear;
 	-o-transition:all 0.5s linear;
@@ -41,12 +41,12 @@ body{color:#535353;font-size:12px;font-family: "arial","微软雅黑";background
 #circle:hover .clock{border-radius:83px;}
 .timeyear{color:#b0b0b0;font-size:18px;line-height:20px;}
 .timeblock{height:28px;margin-top:22px;margin-left:5px;}
-.timeblock span{display:block;height:24px;width:18px;background:url(../images/date.png) no-repeat 0 0;float:left;}
+.timeblock span{display:block;height:24px;width:16px;background:url(../../images/timeline/date.png) no-repeat 0 0;float:left;}
 .timeblock .numf{background-position:0px -48px;}
 .timeblock .nums{background-position:0px 0px;}
 .timeblock .numt{background-position:0px -24px;}
 .timeblock .numfo{background-position:0px -72px;}
-#content{height:355px;width:1180px;overflow:hidden;background:url(../images/vertical.png) no-repeat 434px 2px;padding-top:10px;}
+#content{height:355px;width:1180px;overflow:hidden;background:url(../../images/timeline/vertical.png) no-repeat 434px 2px;padding-top:10px;}
 .list{overflow:hidden;position:relative;}
 .list li{height:110px;vertical-align:bottom;overflow:hidden;position:relative;}
 .liwrap{height:55px;margin-top:28px;}
@@ -56,7 +56,7 @@ body{color:#535353;font-size:12px;font-family: "arial","微软雅黑";background
 .hisct{font-size:14px;color:#6e6e6e;}
 .md{font-size:18px;color:#AEAEAE;}
 .year{font-size:12px;color:#AEAEAE;margin-right:10px;}
-.point{width:55px;height:55px;position:absolute;top:0;left:409px;background:url(../images/point.png) no-repeat 0px 18px;overflow:hidden;}
+.point{width:55px;height:55px;position:absolute;top:0;left:409px;background:url(../../images/timeline/point.png) no-repeat 0px 18px;overflow:hidden;}
 .point b{
 	height:16px;width:16px;background:#fff;display:block;margin:17px 0 0 19px;border-radius:18px;border:2px solid #6bc30d;
 	-webkit-transition:all 0.1s linear;
@@ -79,7 +79,7 @@ body{color:#535353;font-size:12px;font-family: "arial","微软雅黑";background
 *html #arrow{position:absolute;top:expression(eval(document.documentElement.scrollTop));margin-top:350px;}
 
 #arrow ul li{
-	display:block;height:20px;width:20px;background:url(../images/icons.png) no-repeat 0 0;cursor:pointer;
+	display:block;height:20px;width:20px;background:url(../../images/timeline/icons.png) no-repeat 0 0;cursor:pointer;
 	-webkit-transition:all 0.2s ease-out;
 	-moz-transition:all 0.2s ease-out;
 	-o-transition:all 0.2s ease-out;

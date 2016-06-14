@@ -46,7 +46,7 @@ def ReturnBook(request,borrow_id):
                                                                                                      '-').replace(
             '.', '-').replace(' ', '-')),
         user=request.user, record_category="returnbook",
-        record_introduct=u"用户[" + request.user.username +u"]归还了书籍[" + oneToReturn.book_name + "]"
+        record_introduct=u"用户[" + request.user.username +u"]归还了书籍[" + oneToReturn.book.book_name + "]"
     )
     oneRecord.save()
 
