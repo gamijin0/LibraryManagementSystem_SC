@@ -31,6 +31,7 @@ def BookManage(request):
             oneToEdit.author=request.POST['author']
             oneToEdit.book_name = request.POST['book_name']
             oneToEdit.category_id = request.POST['category_id']
+            oneToEdit.publication_year = request.POST['publication_year']
 
                 #计算新增数量
             addedCounts = int(request.POST['inventory'])-oneToEdit.inventory
@@ -86,7 +87,7 @@ def ChenkValid(POST):
     erros = list()
 
     import datetime
-    if(POST['publication_year']<1800 or int(POST['publication_year'])>int(str(datetime.date.today())[0:4])):
+    if(int(POST['publication_year'])<1800 or int(POST['publication_year'])>int(str(datetime.date.today())[0:4])):
         erros.append("Invalid publication_year")
         valid=False
 
