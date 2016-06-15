@@ -3,7 +3,8 @@
 Book(
     book_id(primary key),
     book_name,
-    author,press,
+    author,
+    press,
     publication_year,
     introduction,
     add_time,
@@ -15,39 +16,43 @@ Book(
 # 借书表
 Borrow(
       borrow_id(primary),
-      user_id(foreign_key),
-      book_id(foreign_key),
+      user(foreign_key),
+      book(foreign_key),
       borrow_date,
       return_date,
       term_day)
 
 
+
+#记录
+record(
+    record_id,
+    user(foreign_key),
+    record_date,
+    record_category,
+    record_introduct
+)
 # 用户表
 User(
-    user_id(primary key),
-    user_name,
+    user_name(primary key),
     sex,
     password,
-    age,
-    phone,
     email,
-    user_type,
-    last_visit
+    last_visit,
+    is_active,
+    is_superuser
+    nickname,
+    role
     )
 
 # 用户等级
-Usertype(
-    type_id(primary key),
-    type_name,
-    max_borrow_num,
+PermissionList(
+    name,
+    url
 )
 
-# 评论
-Comment(
-    comment_id(primary key),
-    user_id(foreign_key),
-    book_id(foreign_key),
-    date,
-    is_hidden,
-    comment
+
+RoleList(
+    name,
+    permission
 )
