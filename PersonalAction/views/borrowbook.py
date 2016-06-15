@@ -40,11 +40,11 @@ def ChenkRemain(user,book_id):
 
     bookBeBorrowedlist=Borrow.objects.filter(user=user,return_date=None)
     if(len(bookBeBorrowedlist)>=4):
-        erros.append("超出借书数量限制.")
+        erros.append(u"超出借书数量限制.")
         valid=False
 
     if(Book.objects.get(book_id=book_id).remain_num<=0):
-        erros.append("此书库存不足.")
+        erros.append(u"此书库存不足.")
         valid=False
 
     return {'valid':valid,'errors':erros}
@@ -82,4 +82,5 @@ def BorrowBook(request,book_id):
         # 存储成功后跳转到借书页面
         return HttpResponseRedirect(reverse('status'))
     else:
-        return HttpResponse(str(res['errors']))
+        print(res['errors'])
+        return render_to_response('PersonalAction/borrow.html', {'errors':str(res['errors'])}, RequestContext(request))
