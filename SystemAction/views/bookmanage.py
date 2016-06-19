@@ -32,6 +32,7 @@ def BookManage(request):
             oneToEdit.book_name = request.POST['book_name']
             oneToEdit.category_id = request.POST['category_id']
             oneToEdit.publication_year = request.POST['publication_year']
+            oneToEdit.press=request.POST['press']
 
                 #计算新增数量
             addedCounts = int(request.POST['inventory'])-oneToEdit.inventory
